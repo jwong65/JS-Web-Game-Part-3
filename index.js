@@ -1,16 +1,52 @@
-function newImage(url){
+function newImage(url, left, bottom){
     let image = document.createElement('img')
-    image.src = url   
+    image.src = url
+    image.style.position = 'fixed'
+    image.style.left = left + 'px'
+    image.style.bottom = bottom + 'px'
     document.body.append(image)
     return image
 }
 
-newImage('assets/green-character.gif', 100, 250)
-newImage('assets/tree.png', 200, 450)
-newImage('assets/pillar.png', 350, 250)
-newImage('assets/pine-tree.png', 450, 350)
-newImage('assets/crate.png', 150, 350)
-newImage('assets/well.png', 500, 575)
+function move(image){
+    image.style.position = 'fixed'
+    
+    function moveToCoordinates(left, bottom){
+        image.style.left = left + 'px'
+        image.style.bottom = bottom + 'px'
+    }
+
+    return {
+        to: moveToCoordinates
+    }
+}
+
+// let greenCharacter = newImage('assets/green-character.gif')
+move (newImage('assets/green-character.gif')).to(100, 250)
+
+// let Tree = newImage('assets/tree.png')
+move(newImage('assets/tree.png')).to (200, 450)
+
+// let Pillar = newImage('assets/pillar.png')
+move(newImage('assets/pillar.png')).to (350, 250)
+//This will move the image to the spot where move is asking for.
+//To get one line you need newImage inside the move function ie:
+move(newImage('assets/pine-tree.png')).to(450,350)
+move(newImage('assets/crate.png')).to (150, 350)
+move(newImage('assets/well.png')).to(500, 575)
+
+// let thingThatMoveReturns = move(greenCharacter)
+// thingThatMoveReturns.to(100, 250)
+
+// move(newImage('assets/green-character.gif')).to(100, 250)
+
+
+// newImage('assets/green-character.gif', 100, 250)
+// newImage('assets/tree.png', 200, 450)
+// newImage('assets/pillar.png', 350, 250)
+// newImage('assets/pine-tree.png', 450, 350)
+// newImage('assets/crate.png', 150, 350)
+// newImage('assets/well.png', 500, 575)
 
 
 function newItem(url, left, bottom){
@@ -46,10 +82,3 @@ function newInventory(){
 }
 
 const inventory = newInventory()
-function move(image, left, bottom){
-    image.style.position = 'fixed'
-    image.style.left = left + 'px'
-    image.style.bottom = bottom + 'px'
-}
-let greenCharacter = newImage("assets/green-character.gif")
-move(greenCharacter, 100, 250)
