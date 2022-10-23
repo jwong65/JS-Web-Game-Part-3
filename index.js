@@ -1,9 +1,6 @@
-function newImage(url, left, bottom){
+function newImage(url){
     let image = document.createElement('img')
-    image.src = url
-    image.style.position = 'fixed'
-    image.style.left = left + 'px'
-    image.style.bottom = bottom + 'px'
+    image.src = url   
     document.body.append(image)
     return image
 }
@@ -49,3 +46,10 @@ function newInventory(){
 }
 
 const inventory = newInventory()
+function move(image, left, bottom){
+    image.style.position = 'fixed'
+    image.style.left = left + 'px'
+    image.style.bottom = bottom + 'px'
+}
+let greenCharacter = newImage("assets/green-character.gif")
+move(greenCharacter, 100, 250)
